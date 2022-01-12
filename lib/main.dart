@@ -28,6 +28,14 @@ class Billard extends StatefulWidget {
 
 class _BillardState extends State<Billard> {
   int numBillard = 2;
+  void change() {
+    Random random = Random.secure();
+
+    int randomInt = random.nextInt(5) + 1;
+    setState(() {
+      numBillard = randomInt;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,9 @@ class _BillardState extends State<Billard> {
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
             ),
-            onPressed: () {},
+            onPressed: () {
+              change();
+            },
             child: Image.asset(
               'images/ball$numBillard.png',
             ),
